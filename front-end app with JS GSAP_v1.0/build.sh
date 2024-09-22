@@ -1,20 +1,19 @@
 #!/bin/bash
 
 # Define the app name
-APP_NAME="front-end-app-with-JS-GSAP-v1.0"
+APP_NAME="front-end-app-with-js-gsap-v1.0"
 
-# Remove the old container if it exists
-docker rm -f $APP_NAME || true  # Use '|| true' to avoid errors if the container doesn't exist
+# Check if the container is already running and remove it if it exists
+if [ "$(docker ps -aq -f name=$APP_NAME)" ]; then
+    echo "Stopping and removing existing container: $APP_NAME"
+    docker rm -f $APP_NAME  # Remove the existing container
+fi
 
 # Navigate to the app directory
-cd "front-end app with JS GSAP_v1.0"
+cd "/var/jenkins_home/workspace/app1"
 
 # Build the Docker image
 docker build -t $APP_NAME .
 
-# Run the Docker container on the custom network with a specific IP
-docker run -d \
-  --net my_custom_network \
-  --ip 172.18.0.2 \
-  -p 8081:80 \
-  $APP_NAME
+# Run the Docker container
+docker run -d -p 8082:80 --name $APP_NAME $APP_NAME
