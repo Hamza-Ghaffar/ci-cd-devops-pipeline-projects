@@ -42,9 +42,8 @@ docker build -t $APP_NAME .
 docker run -d -p 8082:80 --name $APP_NAME $APP_NAME
 
 Screenshots
-![alt text](image-2.png)
-
-![alt text](image-1.png)
+![image](https://github.com/user-attachments/assets/6da5ada9-9b14-4c7d-9a6e-9b171ee7ea3c)
+![image](https://github.com/user-attachments/assets/f108d571-d43d-4cad-9f8e-030c406896fb)
 
 
 Contributions
